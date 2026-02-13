@@ -309,6 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 11. Secret Vault Video Logic ---
     window.playVideo = (mood) => {
         const videoArea = document.getElementById('video-display-area');
+        if (!videoArea) return;
+
         videoArea.style.display = 'flex';
 
         // Define video files
@@ -329,15 +331,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         videoArea.innerHTML = `
-            <div style="text-align: center; width: 100%;">
-                <p style="margin-bottom: 10px;">${caption}</p>
-                <video controls autoplay playsinline webkit-playsinline style="width: 100%; max-width: 500px; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.1);">
-                    <source src="${videoSrc}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+            <p style="font-weight: bold; margin-bottom: 5px;">${caption}</p>
+            <video class="vault-video" controls autoplay playsinline webkit-playsinline>
+                <source src="${videoSrc}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         `;
-        videoArea.scrollIntoView({ behavior: 'smooth' });
+
+        // Use a slight delay before scrolling to ensure smooth transition
+        setTimeout(() => {
+            videoArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
     };
 
     // --- 12. AI Love Poem Generator ---

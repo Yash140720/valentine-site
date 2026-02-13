@@ -1516,6 +1516,36 @@ body.night-theme {
     background: var(--primary-color);
 }
 
+#video-display-area {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    color: white;
+}
+
+.vault-video {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 9/16;
+    /* Most mobile videos are 9:16, but contain will handle others */
+    object-fit: contain;
+    background: #000;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+    .vault-video {
+        max-width: 100%;
+        border-width: 2px;
+    }
+}
+
 /* 14. FLASHBACKS (Old "Our Journey Begins") - Restored Flip Card Logic */
 .gallery-grid {
     display: flex;
