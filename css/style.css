@@ -23,6 +23,7 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     transition: background-color 1s ease, color 1s ease;
+    -webkit-text-size-adjust: 100%;
 }
 
 /* Sections */
@@ -1366,6 +1367,8 @@ body.night-theme {
     color: #333;
     font-weight: bold;
     font-family: var(--font-main);
+    font-size: 16px;
+    /* Prevents mobile auto-zoom on focus */
 }
 
 .lock-container button {
