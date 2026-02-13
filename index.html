@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Exists | Mahek & Yash</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lora:wght@400;700&family=Outfit:wght@200;400;700&family=Playfair+Display:ital,wght@1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Plane Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Audio Player (Hidden) -->
+    <audio id="bg-music" loop>
+        <source src="assets/audio/hero_song.mp3" type="audio/mpeg">
+        <source src="assets/audio/background_heartbeat.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Hearts Container -->
+    <div id="floating-hearts-container"></div>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-layer"></div> <!-- Image Background -->
+        <div class="hero-overlay"></div> <!-- Gradient/Darken -->
+
+        <div class="hero-content">
+            <h1 class="hero-title">Our Love Exists</h1>
+            <p class="hero-headline">"In a world full of coincidences…<br>you were my destiny."</p>
+
+            <div class="hero-divider">
+                <span class="heart-icon">❤</span>
+            </div>
+
+            <p class="hero-subtext">
+                To Mahek,<br>
+                The one who made my heart beat again.
+            </p>
+
+            <button id="enter-journey-btn" class="cta-button">Begin Our Journey</button>
+        </div>
+
+        <div class="audio-toggle">
+            <button id="sound-btn">🔇</button>
+        </div>
+
+        <!-- Hidden Easter Egg Trigger Area -->
+        <div id="hero-easter-egg-trigger"
+            style="position:absolute; top:0; left:0; width:100%; height:20%; z-index:100;"></div>
+    </section>
+
+    <!-- 2. TIMELINE SECTION -->
+    <section id="timeline-section" class="content-section">
+        <h2 class="section-title">Since the day you became my home</h2>
+        <p class="section-subtitle">24 January 2024 — The first hello that changed everything.</p>
+
+        <div id="countdown" class="countdown-container">
+            <div class="time-box">
+                <span id="days">0</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-box">
+                <span id="hours">0</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="heartbeat-line"></div>
+
+        <!-- Floating Hearts Animation -->
+        <div class="floating-hearts-timeline"></div>
+    </section>
+
+    <!-- 3. FIRST CHAT STORY -->
+    <section id="first-chat" class="content-section story-section">
+        <h2 class="section-title">Where it all began...</h2>
+        <div class="chat-container">
+            <!-- Simulated Chat Bubbles (Revealed via JS) -->
+            <div class="chat-bubble right chat-bubble-hidden">
+                <p>Hello 👋</p>
+                <span class="time">24 Jan, 7:21 PM</span>
+            </div>
+            <div class="chat-bubble left chat-bubble-hidden">
+                <p>Hi!</p>
+                <span class="time">24 Jan, 8:13 PM</span>
+            </div>
+            <div class="chat-bubble right chat-bubble-hidden">
+                <p>Dev might have told you some story if i'm not wrong</p>
+                <span class="time">24 Jan, 8:44 PM</span>
+            </div>
+            <div class="chat-bubble left chat-bubble-hidden">
+                <p>Yes he told me everything</p>
+                <span class="time">24 Jan, 9:55 PM</span>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="typing-indicator" class="chat-bubble left hidden">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- Actual Screenshot -->
+            <div class="chat-image-container chat-bubble-hidden">
+                <img src="assets/images/first_chat.jpg" alt="Our First Conversation" class="chat-screenshot">
+                <p class="caption">The screenshot that started it all...</p>
+            </div>
+        </div>
+        <p class="story-text">From a simple "Hey" to endless nights...</p>
+    </section>
+
+    <!-- 4. OFFICE LOVE STORY -->
+    <section id="office-story" class="content-section">
+        <h2 class="section-title">Two Worlds, One Connection</h2>
+        <p class="section-subtitle">InfoSec 🔒 ❤️ HR 📋</p>
+
+        <!-- Visual Connection Animation -->
+        <div class="worlds-connection">
+            <div class="world-icon infosec-world">
+                <i class="fas fa-shield-alt"></i>
+                <span class="world-label">InfoSec</span>
+            </div>
+            <div class="connection-line">
+                <div class="heart-pulse">❤️</div>
+            </div>
+            <div class="world-icon hr-world">
+                <i class="fas fa-users"></i>
+                <span class="world-label">HR</span>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <!-- Office Images -->
+            <div class="slide active">
+                <img src="assets/images/office_1.jpg" alt="InfoSec & HR" class="slide-img">
+                <div class="slide-caption">When Cybersecurity meets the beautiful recruiter 👩‍💻❤️</div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/office_2.jpg" alt="Walks" class="slide-img">
+                <div class="slide-caption">Best post-lunch walks 🍃🚶‍♂️</div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/office_3.jpg" alt="Coffee Breaks" class="slide-img">
+                <div class="slide-caption">Meetings in coffee breaks ☕✨</div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/office_4.jpg" alt="Collab" class="slide-img">
+                <div class="slide-caption">Best collab of InfoSec and HR 🤝🔒</div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="prev-btn">❮</button>
+            <button class="next-btn">❯</button>
+        </div>
+    </section>
+
+    <!-- 5. HER HEART (ORPHAN KIDS) -->
+    <section id="her-heart" class="content-section video-section">
+        <div class="video-overlay"></div>
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="assets/videos/orphan_support.mp4" type="video/mp4">
+        </video>
+
+        <div class="her-heart-content">
+            <div class="top-quote">
+                <blockquote>"Your heart made me fall in love with your soul."</blockquote>
+            </div>
+
+            <div class="bottom-message">
+                <p class="emotional-subtext">
+                    Celebrating your birthday with these little angels was the moment I knew...<br>
+                    You are not just beautiful on the outside, but pure gold on the inside. ✨<br>
+                    Best Birthday Ever. ❤️
+                </p>
+                </p>
+                <!-- Button removed as per user request -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. LAST DAYS BEFORE LONG DISTANCE -->
+    <section id="last-days" class="content-section sunset-bg">
+        <div class="content-wrapper">
+            <h2 class="section-title">The Hardest Goodbye</h2>
+            <p class="story-text">
+                Distance is just a space between us that's waiting to be filled with our next reunion.<br>
+                Every mile is a reminder of how much you mean to me, and every goodbye is just a countdown to our next
+                hello.
+            </p>
+
+            <div class="goodbye-images">
+                <!-- Card 1: Sindhi Appreciation -->
+                <div class="goodbye-flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/last_days_1.jpg" alt="Last moments 1" class="goodbye-img-content">
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="flip-text">"Your Sindhi charm stole my heart...<br>The way you speak, the culture
+                                you carry—it’s all magic to me. 💖"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Saree Appreciation -->
+                <div class="goodbye-flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/images/last_days_2.jpg" alt="Last moments 2" class="goodbye-img-content">
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="flip-text">"And when you wear a saree... breathless.<br>Pure elegance wrapped in
+                                grace. You look like a dream. 🌹"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="silent-moment">
+                <p>...</p> <!-- Silent pause -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. DISTANCE MAP (GERMANY - INDIA) -->
+    <section id="distance-map" class="content-section map-section">
+        <h2 class="section-title">Distance is just Geography</h2>
+
+        <!-- Static CSS/SVG Map -->
+        <div class="map-container">
+            <!-- Location: Germany -->
+            <div class="location-point" style="left: 10%; top: 50%;">
+                <img src="assets/images/location_de.jpg" alt="You in Germany" class="map-profile-img">
+                <span class="location-label">Germany<br><span class="coords">51.16° N, 10.45° E</span></span>
+            </div>
+
+            <!-- Path Line -->
+            <div class="path-line">
+                <svg width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <path id="flight-path" d="M30 50 Q 150 0 270 50" stroke="rgba(255,255,255,0.5)" stroke-width="2"
+                        stroke-dasharray="8,8" fill="transparent" />
+                </svg>
+            </div>
+
+            <!-- Flying Planes (Multiple) -->
+            <div class="plane-container" style="animation-delay: 0s;">
+                <i class="fas fa-plane"></i>
+            </div>
+            <div class="plane-container" style="animation-delay: 2s;">
+                <i class="fas fa-plane"></i>
+            </div>
+            <div class="plane-container" style="animation-delay: 4s;">
+                <i class="fas fa-plane"></i>
+            </div>
+
+            <!-- Location: India -->
+            <div class="location-point" style="left: 90%; top: 50%;">
+                <img src="assets/images/location_in.jpg" alt="Me in India" class="map-profile-img">
+                <span class="location-label">India<br><span class="coords">20.59° N, 78.96° E</span></span>
+            </div>
+        </div>
+
+        <div class="distance-stats">
+
+            <div class="distance-stats">
+                <div class="stat-item">
+                    <span class="stat-val">6,700 km</span>
+                    <span class="stat-label">Physical Distance</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">0 km</span>
+                    <span class="stat-label">Heart Distance</span>
+                </div>
+            </div>
+            <div id="map-secret-trigger" class="map-secret-trigger"
+                onclick="this.innerHTML = 'See you soon my Guddiyaa !! ✈️💖'; this.style.color='#ff4081'; if(window.confetti) confetti({particleCount: 150, spread: 100, origin: {y:0.6}});">
+                (Click me)
+            </div>
+    </section>
+
+    <!-- 8. WHY I CHOSE YOU (LOVE LETTER) -->
+    <section id="love-letter" class="content-section letter-section">
+        <div class="letter-paper">
+            <h2 class="handwritten-title">Why I Chose You</h2>
+            <p class="handwritten-text">
+                I chose you not because you were perfect, but because you were perfectly imperfect in ways that
+                completed me.<br><br>
+                I chose you because in a world of temporary connections, you felt eternal. Your laugh became my favorite
+                sound, your happiness became my mission, and your dreams became mine to protect.<br><br>
+                I chose you because loving you doesn't feel like a choice anymore — it feels like breathing. Natural,
+                essential, life-giving.<br><br>
+                I chose you not just for who you are, but for who I become when I'm with you. You make me want to be
+                better, kinder, braver.<br><br>
+                And I will keep choosing you, every single day, in every lifetime, across every distance, through every
+                challenge.<br><br>
+                Because you, Mahek, are the most beautiful choice I've ever made.
+            </p>
+            <div class="signature">- Yash</div>
+        </div>
+    </section>
+
+    <!-- 9. MEMORY FLIP CARD GALLERY -->
+    <section id="memory-gallery" class="content-section">
+        <h2 class="section-title">2025 Flashback</h2>
+        <div class="gallery-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/images/flashback_1.jpg" alt="2025 Memory 1" class="card-img">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>"The time we got lost but didn't care."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/images/flashback_2.jpg" alt="2025 Memory 2" class="card-img">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>"Your smile here > everything else."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/images/flashback_3.jpg" alt="2025 Memory 3" class="card-img">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>"First date nervous laughs."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/images/flashback_4.jpg" alt="2025 Memory 4" class="card-img">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>"Just us."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. PRIVATE LOVE LOCK -->
+    <section id="love-lock" class="content-section lock-section">
+        <div class="lock-container">
+            <div class="lock-icon">🔒</div>
+            <h2 class="section-title">Private Love Lock</h2>
+            <p>Some memories are only ours.<br>If you know, you know ❤️</p>
+
+            <input type="password" id="lock-input" placeholder="Enter the magic word..." />
+            <button id="unlock-btn">Unlock</button>
+            <p id="lock-msg"></p>
+        </div>
+    </section>
+
+    <!-- 11. SECRET GIFT VAULT (Initially Hidden) -->
+    <section id="secret-vault" class="content-section vault-section hidden-section">
+        <h2 class="section-title">Welcome to Our Safe Space 🎁</h2>
+        <div class="vault-grid">
+            <button class="vault-btn" onclick="playVideo('miss')">When you miss me 🥺</button>
+            <button class="vault-btn" onclick="playVideo('sad')">When you are sad 😢</button>
+            <button class="vault-btn" onclick="playVideo('angry')">When you are angry 😡</button>
+        </div>
+        <div id="video-display-area">
+            <!-- Video player will appear here -->
+        </div>
+    </section>
+
+    <!-- 12. AI LOVE POEM GENERATOR -->
+    <section id="ai-poem" class="content-section poem-section">
+        <h2 class="section-title">A Poem Just For You</h2>
+        <button id="generate-poem-btn" class="cta-button">Write Me A Poem ✨</button>
+        <div id="poem-display" class="poem-card hidden">
+            <p id="poem-text"></p>
+            <span class="poem-signature">- AI Yash 🤖</span>
+        </div>
+    </section>
+
+    <!-- 13. FUTURE TOGETHER -->
+    <section id="our-future" class="content-section future-section">
+        <h2 class="section-title">Our Destiny</h2>
+        <ul class="dreams-list">
+            <li>🏠 A home filled with laughter.</li>
+            <li>✨ Spiritual journeys to Vrindavan, Beas, Ujjain, & Golden Temple.</li>
+            <li>✈️ Traveling the world, hand in hand.</li>
+            <li>👴👵 Growing old and grumpy together.</li>
+            <li>💍 Making "Forever" official.</li>
+        </ul>
+
+        <div class="future-letter-container">
+            <h3>A Letter From The Future</h3>
+            <p class="future-text">
+                "Dear Mahek,<br>
+                I am looking back at this moment from 50 years ahead.<br>
+                Best decision of my life.<br>
+                - Old Man Yash"
+            </p>
+        </div>
+    </section>
+
+    <!-- 15. VALENTINE ASK SECTION -->
+    <section id="valentine-ask" class="content-section ask-section">
+        <h2 class="section-title main-question">Will you be my Valentine?</h2>
+
+        <div class="ask-buttons">
+            <button id="yes-btn" class="yes-btn">YES! ❤️</button>
+            <button id="no-btn" class="no-btn">No 😢</button>
+        </div>
+    </section>
+
+    <!-- 16. FINAL FOREVER SCREEN (Initially Hidden) -->
+    <section id="final-screen" class="final-section hidden-section">
+        <div class="stars-bg"></div>
+        <div class="final-content">
+            <h1 class="final-title">I Knew It. ❤️</h1>
+            <div class="final-photo-frame">
+                <video class="final-video" autoplay loop playsinline>
+                    <source src="assets/videos/final_us.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="final-msg">
+                I love you Mahek.<br>
+                A lot.<br>
+                Forever.<br>
+                — Baandru
+            </p>
+        </div>
+    </section>
+
+    <!-- Floating Messages Container (JS Repopulated) -->
+    <div id="floating-msgs"></div>
+
+    <!-- Floating Navigation Button -->
+    <button id="next-section-btn" class="floating-nav-btn" title="Next Section">❤</button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

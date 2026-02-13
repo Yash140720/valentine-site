@@ -1,0 +1,53 @@
+/* HER HEART SECTION (ORPHAN BIRTHDAY) */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.her-heart-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 3rem 2rem;
+}
+
+.top-quote {
+    text-align: center;
+}
+
+.top-quote blockquote {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.bottom-message {
+    text-align: center;
+}
+
+.emotional-subtext {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    line-height: 1.8;
+}
